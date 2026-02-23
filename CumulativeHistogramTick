@@ -1,0 +1,26 @@
+// This Pine Script™ code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © Marruq
+
+//@version=6
+indicator("Cumulative Histogram Tick", overlay = false)
+
+// Pobieranie wartości zamknięcia z TICK
+// tick = request.security("TICK", timeframe.period, close)
+tick = request.security(syminfo.tickerid, timeframe.period, close)
+
+
+// Definicja godzin rozpoczęcia i zakończenia sesji
+startHour = hour == 9 and minute == 30
+endHour = hour == 16
+
+// Inicjalizacja skumulowanej wartości
+var float cumulative = 0
+
+// Resetowanie wartości na początku nowej sesji
+if startHour
+    cumulative := 0
+else if not endHour
+    cumulative += tick
+
+// Wizualizacja histogramu
+plot(series = cumulative,style = plot.style_histogram,color = cumulative >= 0 ? color.new(color.green, 70) : color.new(color.red, 70),linewidth = 2)
