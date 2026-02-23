@@ -1,6 +1,6 @@
 # Cumulative Histogram Tick
 
-This script is designed to create a cumulative histogram based on tick data from a specific financial instrument. The histogram resets at the start of each trading session, which is defined by a fixed time.
+This script is designed for TradingView to create a cumulative histogram based on tick data from a specific financial instrument. The histogram resets at the start of each trading session, which is defined by a fixed time.
 
 https://pl.tradingview.com/script/tHD9HKav/
 
